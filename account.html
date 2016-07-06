@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div ng-controller="LetterController">
+
+  <section ng-if="letter.name" class="page-section letter">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="block">
+          <h2 ng-bind="letter.name"></h2>
+          <hr>
+          <div class="content">
+            <p ng-bind="letter.greeting.text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div ng-controller="ArchiveController">
+
+  <section ng-if="archive.length > 0" class="page-section archive">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="block">
+          <h2>Account history</h2>
+          <hr>
+          <div class="content">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="letter in archive | orderBy:'-$id' track by letter.$id">
+                <span ng-bind="letter.name"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
